@@ -1,441 +1,324 @@
-# Contract Skills 🚀
+# Contract Skills - Claude Code 技能插件 🚀
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![Claude Code Plugin](https://img.shields.io/badge/Claude%20Code-Plugin-purple.svg)](https://claude.ai/code)
 [![Solidity](https://img.shields.io/badge/Solidity-0.8%2B-blue.svg)](https://soliditylang.org/)
 [![Hardhat](https://img.shields.io/badge/Hardhat-2.17%2B-ff9e1b.svg)](https://hardhat.org/)
-[![Python](https://img.shields.io/badge/Python-3.8%2B-green.svg)](https://www.python.org/)
 [![Ethereum](https://img.shields.io/badge/Ethereum-Smart%20Contracts-627EEA.svg)](https://ethereum.org/)
 
-> 一套专业的以太坊智能合约开发和安全审计工具集，包含 Hardhat 项目管理和 Wake 安全审计两大核心技能模块。
+> **Contract Skills** 是专为 [Claude Code](https://claude.ai/code) 设计的智能合约开发与安全审计技能插件集。包含两个核心技能模块：**hardhat-manager**（Hardhat 项目管理）和 **wake-auditor**（Wake 安全审计），为以太坊智能合约开发提供端到端的自动化解决方案。
 
-## 🌟 项目特色
+## 🎯 插件特色
 
-- **🏗️ 完整开发环境**: 一键式 Hardhat 环境配置和项目管理
-- **🤖 AI 驱动开发**: 智能合约自动生成和代码优化
-- **🔐 企业级安全**: 多工具集成的安全审计和漏洞扫描
-- **🌐 多链部署**: 支持主流以太坊兼容网络的协调部署
-- **📊 实时监控**: 部署后合约监控和告警系统
-- **🎯 项目模板**: 预配置的 DeFi、NFT、DAO 项目模板
+### 💡 作为 Claude Code 技能的独特优势
 
-## 📋 目录
+- **🤖 意图驱动开发** - 响应高层次开发意图，而非底层命令操作
+- **🔄 端到端自动化** - 从项目初始化到部署监控的全流程闭环
+- **🧩 模块化设计** - 技能可独立使用或组合形成完整工作流
+- **📋 标准化流程** - 遵循行业最佳实践的自动化操作规范
+- **🛡️ 企业级安全** - 集成多种安全工具的自动化审计流程
 
-- [技能模块](#-技能模块)
-- [快速开始](#-快速开始)
-- [安装指南](#-安装指南)
-- [使用示例](#-使用示例)
-- [项目模板](#-项目模板)
-- [安全功能](#-安全功能)
-- [支持的网络](#-支持的网络)
-- [贡献指南](#-贡献指南)
-- [许可证](#-许可证)
+### 🌟 核心价值
 
-## 🧩 技能模块
+- **降低开发门槛** - AI 驱动的智能合约生成和项目管理
+- **提升开发效率** - 自动化重复性任务，专注于业务逻辑
+- **保障安全合规** - 多层次安全扫描和风险模式识别
+- **支持多链部署** - 一键式跨链部署和验证流程
 
-### Hardhat Manager 🏗️
+## 📦 技能模块概览
 
-专业的 Hardhat 开发环境管理工具，提供完整的智能合约开发生命周期管理。
+### 1️⃣ hardhat-manager - Hardhat 开发环境管理
 
-**核心功能:**
-- ✅ 自动化环境设置和配置
-- ✅ AI 驱动的智能合约生成
-- ✅ 多链部署协调
-- ✅ 实时合约监控
-- ✅ Gas 优化分析
-- ✅ 合约升级管理
-- ✅ 自动化验证
+**适用场景：** 使用 Hardhat 进行以太坊智能合约开发的任何阶段
 
-### Wake Auditor 🔍
+**核心能力：**
+- 🏗️ **环境配置** - 一键式 Hardhat 开发环境安装和配置
+- 🤖 **AI 合约生成** - 智能化智能合约代码生成（ERC20、NFT、DeFi 等）
+- 🌐 **多链部署** - 协调多个以太坊兼容网络的同步部署
+- 🔍 **安全扫描** - 集成 Slither、Mythril 等工具的自动化安全审计
+- 📊 **实时监控** - 部署后合约的实时状态监控和告警
+- ⚡ **Gas 优化** - 自动化 Gas 使用分析和优化建议
 
-基于 Wake Printer 脚本的 Solidity 智能合约安全审计工具。
+**项目模板支持：**
+- `basic-template` - 标准智能合约项目
+- `defi-template` - DeFi 协议开发模板
+- `nft-template` - NFT 项目模板
+- `dao-template` - DAO 治理模板
+- `multisig-template` - 多重签名钱包模板
 
-**核心功能:**
-- ✅ 静态分析和漏洞检测
-- ✅ 自定义审计规则
-- ✅ 批量合约分析
-- ✅ 详细审计报告
-- ✅ CI/CD 集成
+### 2️⃣ wake-auditor - Wake 安全审计
+
+**适用场景：** 需要深度安全审计的 Solidity 智能合约项目
+
+**核心能力：**
+- 🔍 **静态分析** - 基于 Wake 中间表示(IR)的深度代码分析
+- 🎯 **漏洞检测** - 识别常见安全漏洞模式（重入、访问控制、整数溢出等）
+- 📋 **自定义规则** - 创建个性化的审计规则和检查脚本
+- 📊 **报告生成** - 多格式的专业审计报告（JSON、HTML、Markdown）
+
+**审计模式：**
+- **快速扫描** - 基础安全检查，识别常见漏洞
+- **深度分析** - 全面逻辑分析，包括复杂业务逻辑漏洞
+- **批量审计** - 处理整个项目的合约文件，生成综合报告
 
 ## 🚀 快速开始
 
 ### 系统要求
 
-- Python 3.8+
-- Node.js 16+
-- Git
+- **Claude Code** - 确保已安装 Claude Code CLI
+- **Python 3.8+** - 技能脚本运行环境
+- **Node.js 16+** - Hardhat 开发环境
 
-### 安装步骤
+### 安装技能插件
 
-1. **克隆仓库**
 ```bash
-git clone https://github.com/your-username/contract-skills.git
-cd contract-skills
+# 添加技能市场（如果尚未添加）
+/plugin marketplace add contract-skills
+
+# 安装完整的智能合约开发技能包
+/plugin install contract-skills
+
+# 或者单独安装特定技能
+/plugin install hardhat-manager@contract-skills
+/plugin install wake-auditor@contract-skills
 ```
 
-2. **安装 Python 依赖**
+### 技能激活
+
+安装完成后，在 Claude Code 中使用以下命令激活相应技能：
+
 ```bash
-pip install -r requirements.txt  # 如果存在
+# 激活 Hardhat 管理技能
+/skill hardhat-manager
+
+# 激活 Wake 审计技能
+/skill wake-auditor
 ```
 
-3. **设置 Hardhat 环境**
-```bash
-# 自动化完整环境设置
-python3 hardhat-manager/scripts/setup_hardhat.py
+## 💡 使用场景与工作流
 
-# 或者手动设置特定项目
-python3 hardhat-manager/scripts/setup_project.py --template basic --name my-project
+### 🆕 新项目创建工作流
+
+**用户意图：** "我想创建一个新的 NFT 项目"
+
+```bash
+# Claude Code 会自动：
+1. 激活 hardhat-manager 技能
+2. 执行项目初始化脚本
+3. 生成 NFT 合约代码
+4. 配置开发环境
+5. 提供测试和部署指导
 ```
 
-4. **验证安装**
+**自动化执行：**
 ```bash
-cd hardhat-manager/assets/basic-template
-npm install
-npx hardhat test
-```
-
-## 📖 使用示例
-
-### 1. 创建新项目
-
-```bash
-# 创建 NFT 项目
 python3 hardhat-manager/scripts/setup_project.py \
   --template nft \
   --name my-nft-collection \
   --network polygon
-
-# 创建 DeFi 项目
-python3 hardhat-manager/scripts/setup_project.py \
-  --template defi \
-  --name my-defi-protocol \
-  --network ethereum
 ```
 
-### 2. AI 生成智能合约
+### 🔒 安全审计工作流
+
+**用户意图：** "帮我审计这个合约的安全性"
 
 ```bash
-# 交互式合约创建
-python3 hardhat-manager/scripts/contract_generator.py --interactive
-
-# 生成 ERC20 代币
-python3 hardhat-manager/scripts/contract_generator.py \
-  --type erc20 \
-  --name MyToken \
-  --symbol MTK \
-  --supply 1000000
-
-# 生成 NFT 合约
-python3 hardhat-manager/scripts/contract_generator.py \
-  --type nft \
-  --name MyCollection \
-  --symbol NFT \
-  --max-supply 10000
+# Claude Code 会自动：
+1. 激活 wake-auditor 技能
+2. 执行合约静态分析
+3. 运行多种安全检查
+4. 生成详细审计报告
+5. 提供修复建议
 ```
 
-### 3. 多链部署
-
+**自动化执行：**
 ```bash
-# 交互式多链部署
-python3 hardhat-manager/scripts/multi_chain_deployer.py --interactive
-
-# 同时部署到多个网络
-python3 hardhat-manager/scripts/multi_chain_deployer.py \
-  --chains ethereum,polygon,arbitrum \
-  --contract MyToken \
-  --strategy simultaneous
-```
-
-### 4. 安全审计
-
-```bash
-# 完整安全扫描
-python3 hardhat-manager/scripts/security_scanner.py \
-  --scan contracts/MyContract.sol \
-  --full-scan
-
-# 使用特定工具扫描
-python3 hardhat-manager/scripts/security_scanner.py \
-  --project . \
-  --tools slither,upgrade_security_analysis
-
-# 使用 Wake 进行深度审计
 python3 wake-auditor/scripts/vulnerability_detector.py \
   --project ./contracts/
 ```
 
-### 5. 实时监控
+### 🌐 多链部署工作流
+
+**用户意图：** "将这个合约部署到以太坊和 Polygon"
 
 ```bash
-# 监控特定合约
-python3 hardhat-manager/scripts/monitor.py \
-  --contract 0x1234...abcd \
-  --network ethereum
-
-# 交互式监控设置
-python3 hardhat-manager/scripts/monitor.py --interactive
+# Claude Code 会自动：
+1. 配置多链部署参数
+2. 执行协调部署策略
+3. 验证合约源码
+4. 生成部署报告
 ```
 
-## 🎨 项目模板
-
-### 基础模板 (Basic Template)
-标准智能合约项目结构，适用于简单的代币和工具合约。
-
+**自动化执行：**
 ```bash
-python3 hardhat-manager/scripts/setup_project.py --template basic --name my-basic-project
+python3 hardhat-manager/scripts/multi_chain_deployer.py \
+  --chains ethereum,polygon \
+  --contract MyToken \
+  --strategy coordinated
 ```
 
-**包含内容:**
-- 预配置的 Hardhat 设置
-- 示例智能合约和测试
-- 基础部署脚本
-- 标准安全配置
+## 🛠️ 技能架构设计
 
-### DeFi 模板 (DeFi Template)
-去中心化金融协议开发模板，包含代币、质押和治理合约。
+### 设计原则
 
-```bash
-python3 hardhat-manager/scripts/setup_project.py --template defi --name my-defi-protocol
+1. **面向意图，而非操作** - 技能响应用户的业务意图
+2. **端到端闭环** - 提供完整的自动化解决方案
+3. **可组合与可扩展** - 技能可独立使用或组合工作流
+4. **用户体验优先** - 提供清晰的反馈和错误处理
+
+### 分层架构
+
+```
+用户意图 (创建 NFT 项目)
+    ↓
+技能接口 (hardhat-manager)
+    ↓
+工作流编排 (项目初始化 → 合约生成 → 环境配置)
+    ↓
+原子工具 (setup_project.py, contract_generator.py)
+    ↓
+底层库 (Hardhat, OpenZeppelin, Ethers.js)
 ```
 
-**包含内容:**
-- ERC20 代币合约
-- 质押和奖励合约
-- 流动性挖矿合约
-- 治理投票合约
-- DeFi 安全最佳实践
+### 资源组织
 
-### NFT 模板 (NFT Template)
-非同质化代币项目模板，支持 ERC721 和 ERC1155 标准。
-
-```bash
-python3 hardhat-manager/scripts/setup_project.py --template nft --name my-nft-collection
+每个技能遵循标准化结构：
+```
+skill-name/
+├── SKILL.md          # 技能定义和使用指南
+├── scripts/          # 自动化执行脚本
+├── assets/           # 项目模板和配置文件
+├── references/       # 详细文档和最佳实践
+└── design/           # 设计文档和规范
 ```
 
-**包含内容:**
-- ERC721/ERC1155 合约
-- 版税和版税分配
-- 元数据管理
-- 市场集成接口
-- IPFS 集成示例
+## 📚 技能文档与资源
 
-### DAO 模板 (DAO Template)
-去中心化自治组织开发模板，包含完整的治理框架。
+### 📖 完整文档
 
+- **[hardhat-manager 技能文档](hardhat-manager/SKILL.md)** - 完整的 Hardhat 开发指南
+- **[wake-auditor 技能文档](wake-auditor/SKILL.md)** - 详细的安全审计指南
+- **[项目开发指南](CLAUDE.md)** - 项目架构和开发规范
+
+### 🎯 教程与示例
+
+每个技能包含丰富的使用示例：
+
+**Hardhat Manager 示例：**
 ```bash
-python3 hardhat-manager/scripts/setup_project.py --template dao --name my-dao
-```
+# AI 驱动的合约生成
+python3 hardhat-manager/scripts/contract_generator.py --interactive
 
-**包含内容:**
-- 治理代币合约
-- 投票和提案系统
-- 金库管理
-- 多重签名钱包
-- 时间锁合约
-
-### 多重签名模板 (Multisig Template)
-企业级多重签名钱包模板。
-
-```bash
-python3 hardhat-manager/scripts/setup_project.py --template multisig --name my-multisig
-```
-
-**包含内容:**
-- Gnosis 兼容的多重签名钱包
-- 灵活的确认阈值设置
-- 交易历史和状态管理
-- 安全的密钥管理
-
-## 🔒 安全功能
-
-### 自动化安全扫描
-
-支持多种行业标准安全工具:
-
-- **Slither** - Solidity 静态分析框架
-- **Mythril** - 符号执行和漏洞检测
-- **Echidna** - 基于属性的模糊测试
-- **自定义模式匹配** - 针对新兴威胁的检测
-
-### 漏洞检测类型
-
-- 🔴 **关键漏洞**: 重入攻击、权限绕过、整数溢出
-- 🟠 **高风险**: 访问控制问题、未初始化存储
-- 🟡 **中等风险**: Gas 优化问题、事件缺失
-- 🔵 **信息级**: 代码质量和最佳实践
-
-### 升级安全分析
-
-专门针对可升级合约的安全分析:
-- 存储布局冲突检测
-- 代理模式兼容性验证
-- 构造函数安全性检查
-- 自毁函数风险评估
-
-### 报告生成
-
-- **JSON 报告**: 机器可读的详细漏洞数据
-- **Markdown 报告**: 人类可读的安全审计文档
-- **执行摘要**: 高层次安全概览
-- **修复指导**: 针对每个问题的具体建议
-
-## 🌐 支持的网络
-
-### 主网支持
-- **Ethereum** - 以太坊主网
-- **Polygon** - PoS 链
-- **Arbitrum** - Layer 2 解决方案
-- **Optimism** - Layer 2 解决方案
-- **BSC** - 币安智能链
-
-### 测试网支持
-- **Goerli** - 以太坊测试网
-- **Sepolia** - 以太坊测试网
-- **Mumbai** - Polygon 测试网
-- **Arbitrum Goerli** - Arbitrum 测试网
-
-### 网络特性
-- ⚡ **Gas 优化** - 智能Gas价格调整
-- 🔄 **自动重试** - 部署失败自动重试
-- 📊 **实时状态** - 部署进度实时反馈
-- ✅ **自动验证** - 区块浏览器合约验证
-
-## 🛠️ 开发工作流
-
-### 1. 项目初始化
-```bash
-# 选择合适的模板
-python3 hardhat-manager/scripts/setup_project.py --template <type> --name <project>
-
-# 配置开发环境
-cd <project-directory>
-npm install
-npx hardhat compile
-```
-
-### 2. 开发和测试
-```bash
-# 本地开发
-npx hardhat node
-npx hardhat run scripts/deploy.js --network localhost
-
-# 运行测试
-npx hardhat test
-npx hardhat coverage
-
-# Gas 分析
-python3 hardhat-manager/scripts/gas_analyzer.py --contract MyContract
-```
-
-### 3. 安全审计
-```bash
 # 完整安全扫描
 python3 hardhat-manager/scripts/security_scanner.py --project . --full-scan
 
-# 特定工具扫描
-python3 hardhat-manager/scripts/security_scanner.py --project . --tools slither
+# 实时监控设置
+python3 hardhat-manager/scripts/monitor.py --interactive
+```
 
-# Wake 深度分析
+**Wake Auditor 示例：**
+```bash
+# 快速安全检查
+python3 wake-auditor/scripts/contract_scanner.py --contract contracts/MyContract.sol
+
+# 自定义审计规则
 python3 wake-auditor/scripts/vulnerability_detector.py --project ./contracts/
 ```
 
-### 4. 部署和验证
-```bash
-# 多链部署
-python3 hardhat-manager/scripts/multi_chain_deployer.py --chains ethereum,polygon --contract MyContract
+## 🔄 技能组合工作流
 
-# 合约验证
-python3 hardhat-manager/scripts/verify_contracts.py --network ethereum --address <contract-address>
+### 完整的 DApp 开发流程
+
+```bash
+# 1. 项目初始化 (hardhat-manager)
+/skill hardhat-manager
+"创建一个 DeFi 项目，包含代币和质押合约"
+
+# 2. 安全审计 (wake-auditor)
+/skill wake-auditor
+"审计刚生成的 DeFi 合约安全性"
+
+# 3. 多链部署 (hardhat-manager)
+/skill hardhat-manager
+"将审计通过的合约部署到以太坊和 Polygon"
+
+# 4. 部署后监控 (hardhat-manager)
+/skill hardhat-manager
+"设置已部署合约的实时监控"
 ```
 
-### 5. 监控和维护
-```bash
-# 设置监控
-python3 hardhat-manager/scripts/monitor.py --contract <address> --network <network>
+### CI/CD 集成工作流
 
-# 合约升级
-python3 hardhat-manager/scripts/upgrade_manager.py --contract MyContract --new-implementation <address>
+```bash
+# 自动化安全检查
+python3 hardhat-manager/scripts/security_scanner.py --setup-ci
+
+# 批量审计
+python3 wake-auditor/scripts/vulnerability_detector.py --project . --batch-mode
+
+# 自动化部署
+python3 hardhat-manager/scripts/multi_chain_deployer.py --config ci-config.json
 ```
 
-## 🤝 贡献指南
+## 🌟 为什么选择 Contract Skills？
 
-我们欢迎所有形式的贡献！请查看 [CONTRIBUTING.md](CONTRIBUTING.md) 了解详细信息。
+### 🎯 针对 Claude Code 优化
+
+- **自然语言交互** - 用日常语言描述需求，AI 自动选择合适的技能和工作流
+- **上下文感知** - 技能根据项目状态和用户意图自动调整行为
+- **渐进式披露** - 复杂功能分层展示，新手友好且专家够用
+
+### 🏗️ 企业级架构
+
+- **模块化设计** - 每个技能专注特定领域，可独立维护和升级
+- **标准化接口** - 统一的技能接口和数据格式
+- **可扩展架构** - 易于添加新技能和扩展现有功能
+
+### 🔒 安全优先
+
+- **多层次安全** - 从代码生成到部署监控的全流程安全保障
+- **行业标准工具** - 集成 Slither、Wake 等成熟的安全分析工具
+- **自动化最佳实践** - 内置安全检查清单和风险模式识别
+
+## 🤝 贡献与社区
+
+### 技能开发规范
+
+遵循 [Claude Code 技能开发最佳实践](skill-best-practice.txt)：
+
+- ✅ 面向意图的技能设计
+- ✅ 标准化的技能结构
+- ✅ 完整的文档和示例
+- ✅ 可组合的工作流设计
+- ✅ 强化的错误处理和用户反馈
 
 ### 贡献方式
 
-1. **Fork 项目**
-2. **创建功能分支** (`git checkout -b feature/AmazingFeature`)
-3. **提交更改** (`git commit -m 'Add some AmazingFeature'`)
-4. **推送到分支** (`git push origin feature/AmazingFeature`)
-5. **创建 Pull Request**
-
-### 开发指南
-
-- 遵循现有的代码风格和最佳实践
-- 为新功能添加适当的测试
-- 更新相关文档
-- 确保所有测试通过
-
-## 📚 文档和资源
-
-- [📖 完整文档](docs/)
-- [🔧 API 参考](docs/api.md)
-- [🎯 教程](docs/tutorials/)
-- [❓ 常见问题](docs/faq.md)
-- [📊 项目状态](docs/status.md)
-
-### 社区支持
-
-- 💬 [Discord 社区](https://discord.gg/)
-- 🐦 [Twitter 关注](https://twitter.com/)
-- 📧 [邮件联系](mailto:support@example.com)
-
-## 🔧 技术栈
-
-### 核心技术
-- **Solidity** ^0.8.0 - 智能合约开发语言
-- **Hardhat** ^2.17.0 - 以太坊开发环境
-- **Python** 3.8+ - 自动化脚本语言
-- **Node.js** 16+ - JavaScript 运行时
-
-### 主要依赖
-- **OpenZeppelin** - 安全的合约库
-- **Ethers.js** - 以太坊交互库
-- **Chai** - 测试断言库
-- **Slither** - 安全分析工具
-- **Wake** - Solidity 中间表示分析
-
-## 📈 路线图
-
-### v1.1 (计划中)
-- [ ] 更多网络支持 (Avalanche, Fantom)
-- [ ] Web3 UI 界面
-- [ ] 高级监控仪表板
-- [ ] 更多 DeFi 原语模板
-
-### v1.2 (未来)
-- [ ] ZK-Rollup 部署支持
-- [ ] 跨链桥集成
-- [ ] AI 代码优化建议
-- [ ] 社区贡献模板市场
+1. **Fork 项目并创建技能分支**
+2. **遵循技能开发规范** - 参考 `skill-best-practice.txt`
+3. **编写 SKILL.md** - 定义技能接口和使用指南
+4. **实现自动化脚本** - 在 `scripts/` 目录下
+5. **添加测试和文档** - 确保技能质量和可用性
 
 ## 📄 许可证
 
-本项目采用 MIT 许可证 - 查看 [LICENSE](LICENSE) 文件了解详情。
+本项目采用 **Apache 2.0 许可证** - 允许商业和非商业使用。
 
 ## 🙏 致谢
 
-感谢以下开源项目和社区的支持:
+感谢以下开源项目和社区：
 
-- [Hardhat](https://hardhat.org/) - 专业的以太坊开发环境
+- [Claude Code](https://claude.ai/code) - 强大的 AI 辅助开发环境
+- [Hardhat](https://hardhat.org/) - 专业的以太坊开发框架
+- [Wake](https://github.com/Ackee-Blockchain/wake) - 先进的 Solidity 分析工具
 - [OpenZeppelin](https://openzeppelin.com/) - 安全的智能合约标准
-- [Slither](https://github.com/crytic/slither) - Solidity 静态分析框架
-- [Wake](https://github.com/Ackee-Blockchain/wake) - Solidity 中间表示分析工具
 
 ---
 
 <div align="center">
 
-**⭐ 如果这个项目对你有帮助，请给我们一个 Star！**
+**⭐ 如果这些技能对你的智能合约开发有帮助，请给我们一个 Star！**
 
-Made with ❤️ by the Contract Skills Team
+Made with ❤️ for the Claude Code Community
 
 </div>
