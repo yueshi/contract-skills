@@ -1,0 +1,90 @@
+{
+  "name": "hardhat-project-with-deploy",
+  "version": "1.0.0",
+  "description": "Hardhat project with hardhat-deploy integration for contract management",
+  "main": "index.js",
+  "scripts": {
+    "compile": "npx hardhat compile",
+    "test": "npx hardhat test",
+    "test:coverage": "npx hardhat coverage",
+    "node": "npx hardhat node",
+    "clean": "npx hardhat clean",
+    "lint": "solhint 'contracts/**/*.sol'",
+    "lint:fix": "solhint 'contracts/**/*.sol' --fix",
+
+    "deploy:local": "npx hardhat run scripts/deploy/01_deploy_dependencies.js --network localhost && npx hardhat run scripts/deploy/02_deploy_mysmartcontract.js --network localhost",
+    "deploy:testnet": "npx hardhat run scripts/deploy/01_deploy_dependencies.js --network goerli && npx hardhat run scripts/deploy/02_deploy_mysmartcontract.js --network goerli",
+    "deploy:mainnet": "npx hardhat run scripts/deploy/01_deploy_dependencies.js --network mainnet && npx hardhat run scripts/deploy/02_deploy_mysmartcontract.js --network mainnet",
+    "deploy:polygon": "npx hardhat run scripts/deploy/01_deploy_dependencies.js --network polygon && npx hardhat run scripts/deploy/02_deploy_mysmartcontract.js --network polygon",
+    "deploy:arbitrum": "npx hardhat run scripts/deploy/01_deploy_dependencies.js --network arbitrum && npx hardhat run scripts/deploy/02_deploy_mysmartcontract.js --network arbitrum",
+
+    "deploy:all:local": "npx hardhat deploy --network localhost --tags all",
+    "deploy:all:testnet": "npx hardhat deploy --network goerli --tags all",
+    "deploy:all:mainnet": "npx hardhat deploy --network mainnet --tags all",
+    "deploy:all:polygon": "npx hardhat deploy --network polygon --tags all",
+    "deploy:all:arbitrum": "npx hardhat deploy --network arbitrum --tags all",
+
+    "verify": "npx hardhat verify",
+    "verify:etherscan": "npx hardhat verify --network mainnet",
+    "verify:polygonscan": "npx hardhat verify --network polygon",
+    "verify:arbiscan": "npx hardhat verify --network arbitrum",
+
+    "size": "npx hardhat size-contracts",
+    "gas-report": "REPORT_GAS=true npx hardhat test",
+    "fork:test": "npx hardhat test --network hardhat-fork",
+
+    "deploy:info": "npx hardhat run scripts/deploy/deploy-info.js --network localhost -- list",
+    "deploy:report": "npx hardhat run scripts/deploy/deploy-info.js --network localhost -- report",
+    "deploy:export": "npx hardhat run scripts/deploy/deploy-info.js --network localhost -- export",
+
+    "deploy:help": "echo 'Available commands: deploy:local, deploy:testnet, deploy:mainnet, deploy:polygon, deploy:arbitrum, deploy:all:*, deploy:info, deploy:report, deploy:export'"
+  },
+  "keywords": [
+    "hardhat",
+    "ethereum",
+    "smart-contracts",
+    "solidity",
+    "blockchain",
+    "hardhat-deploy",
+    "deployment"
+  ],
+  "author": "Hardhat Manager Skill",
+  "license": "MIT",
+  "devDependencies": {
+    "@nomicfoundation/hardhat-chai-matchers": "^2.0.0",
+    "@nomicfoundation/hardhat-ethers": "^3.0.0",
+    "@nomicfoundation/hardhat-network-helpers": "^1.0.0",
+    "@nomicfoundation/hardhat-toolbox": "^3.0.0",
+    "@nomicfoundation/hardhat-verify": "^1.0.0",
+    "@openzeppelin/contracts": "^4.9.0",
+    "@openzeppelin/contracts-upgradeable": "^4.9.0",
+    "@openzeppelin/hardhat-upgrades": "^2.4.0",
+    "@typechain/ethers-v6": "^0.4.0",
+    "@typechain/hardhat": "^8.0.0",
+    "@types/chai": "^4.2.0",
+    "@types/mocha": ">=9.1.0",
+    "chai": "^4.2.0",
+    "ethers": "^6.4.0",
+    "hardhat": "^2.17.1",
+    "hardhat-contract-sizer": "^2.10.0",
+    "hardhat-deploy": "^0.11.34",
+    "hardhat-deploy-ethers": "^0.3.0-beta.13",
+    "hardhat-gas-reporter": "^1.0.8",
+    "solhint": "^3.6.2",
+    "solidity-coverage": "^0.8.1",
+    "ts-node": ">=8.0.0",
+    "typechain": "^8.3.0",
+    "typescript": ">=4.5.0"
+  },
+  "dependencies": {
+    "dotenv": "^16.3.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/your-repo.git"
+  },
+  "bugs": {
+    "url": "https://github.com/your-username/your-repo/issues"
+  },
+  "homepage": "https://github.com/your-username/your-repo#readme"
+}

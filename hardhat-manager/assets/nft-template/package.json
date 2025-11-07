@@ -1,0 +1,63 @@
+{
+  "name": "nft-hardhat-project",
+  "version": "1.0.0",
+  "description": "NFT collection Hardhat template with ERC721 and marketplace",
+  "main": "index.js",
+  "scripts": {
+    "compile": "npx hardhat compile",
+    "test": "npx hardhat test",
+    "test:coverage": "npx hardhat coverage",
+    "test:nft": "npx hardhat test test/ERC721Collection.test.js",
+    "test:marketplace": "npx hardhat test test/NFTMarketplace.test.js",
+    "deploy:local": "npx hardhat run scripts/deploy.js --network localhost",
+    "deploy:testnet": "npx hardhat run scripts/deploy.js --network goerli",
+    "deploy:mainnet": "npx hardhat run scripts/deploy.js --network mainnet",
+    "deploy:collection": "npx hardhat run scripts/deploy-collection.js --network localhost",
+    "deploy:marketplace": "npx hardhat run scripts/deploy-marketplace.js --network localhost",
+    "node": "npx hardhat node",
+    "clean": "npx hardhat clean",
+    "verify": "npx hardhat verify",
+    "size": "npx hardhat size-contracts",
+    "gas-report": "REPORT_GAS=true npx hardhat test",
+    "lint": "solhint 'contracts/**/*.sol'",
+    "lint:fix": "solhint 'contracts/**/*.sol' --fix",
+    "metadata": "npx hardhat run scripts/generate-metadata.js",
+    "metadata:test": "npx hardhat run scripts/test-metadata.js --network localhost"
+  },
+  "keywords": [
+    "hardhat",
+    "ethereum",
+    "smart-contracts",
+    "nft",
+    "erc721",
+    "marketplace",
+    "blockchain"
+  ],
+  "author": "Hardhat Manager Skill",
+  "license": "MIT",
+  "devDependencies": {
+    "@nomicfoundation/hardhat-chai-matchers": "^2.0.0",
+    "@nomicfoundation/hardhat-ethers": "^3.0.0",
+    "@nomicfoundation/hardhat-network-helpers": "^1.0.0",
+    "@nomicfoundation/hardhat-toolbox": "^3.0.0",
+    "@nomicfoundation/hardhat-verify": "^1.0.0",
+    "@openzeppelin/contracts": "^4.9.0",
+    "@typechain/ethers-v6": "^0.4.0",
+    "@typechain/hardhat": "^8.0.0",
+    "@types/chai": "^4.2.0",
+    "@types/mocha": ">=9.1.0",
+    "chai": "^4.2.0",
+    "ethers": "^6.4.0",
+    "hardhat": "^2.17.1",
+    "hardhat-contract-sizer": "^2.10.0",
+    "hardhat-gas-reporter": "^1.0.8",
+    "solhint": "^3.6.2",
+    "solidity-coverage": "^0.8.1",
+    "ts-node": ">=8.0.0",
+    "typechain": "^8.3.0",
+    "typescript": ">=4.5.0"
+  },
+  "dependencies": {
+    "dotenv": "^16.3.1"
+  }
+}

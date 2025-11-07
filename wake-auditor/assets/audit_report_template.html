@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>智能合约安全审计报告</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 2.5em;
+            font-weight: 300;
+        }
+
+        .header p {
+            margin: 10px 0 0 0;
+            opacity: 0.9;
+            font-size: 1.1em;
+        }
+
+        .summary {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 30px;
+            background: #f8f9fa;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .summary-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .summary-card h3 {
+            margin: 0 0 10px 0;
+            color: #495057;
+            font-size: 0.9em;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .summary-card .number {
+            font-size: 2em;
+            font-weight: bold;
+            margin: 0;
+        }
+
+        .high { color: #dc3545; }
+        .medium { color: #ffc107; }
+        .low { color: #28a745; }
+        .info { color: #17a2b8; }
+
+        .content {
+            padding: 30px;
+        }
+
+        .vulnerability {
+            background: white;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            overflow: hidden;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .vulnerability:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .vulnerability-header {
+            padding: 20px;
+            border-left: 4px solid;
+            background: #f8f9fa;
+        }
+
+        .vulnerability.high .vulnerability-header {
+            border-left-color: #dc3545;
+            background: #fff5f5;
+        }
+
+        .vulnerability.medium .vulnerability-header {
+            border-left-color: #ffc107;
+            background: #fffbf0;
+        }
+
+        .vulnerability.low .vulnerability-header {
+            border-left-color: #28a745;
+            background: #f8fff9;
+        }
+
+        .vulnerability-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .vulnerability-title h3 {
+            margin: 0;
+            font-size: 1.2em;
+        }
+
+        .severity-badge {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            font-weight: bold;
+            text-transform: uppercase;
+            color: white;
+        }
+
+        .severity-badge.high { background: #dc3545; }
+        .severity-badge.medium { background: #ffc107; color: #333; }
+        .severity-badge.low { background: #28a745; }
+
+        .vulnerability-details {
+            padding: 20px;
+            border-top: 1px solid #e9ecef;
+        }
+
+        .code-snippet {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 4px;
+            padding: 15px;
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            font-size: 0.9em;
+            overflow-x: auto;
+            margin: 10px 0;
+        }
+
+        .recommendation {
+            background: #e7f3ff;
+            border-left: 4px solid #007bff;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .file-info {
+            color: #6c757d;
+            font-size: 0.9em;
+            margin-bottom: 5px;
+        }
+
+        .footer {
+            background: #f8f9fa;
+            padding: 20px 30px;
+            text-align: center;
+            border-top: 1px solid #e9ecef;
+            color: #6c757d;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+
+            .header {
+                padding: 20px;
+            }
+
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            .summary {
+                padding: 20px;
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .content {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 报告头部 -->
+        <header class="header">
+            <h1>智能合约安全审计报告</h1>
+            <p>项目名称: <span id="project-name">--</span> | 生成时间: <span id="report-date">--</span></p>
+        </header>
+
+        <!-- 摘要统计 -->
+        <section class="summary">
+            <div class="summary-card">
+                <h3>扫描文件数</h3>
+                <p class="number info" id="total-files">0</p>
+            </div>
+            <div class="summary-card">
+                <h3>发现漏洞</h3>
+                <p class="number info" id="total-vulnerabilities">0</p>
+            </div>
+            <div class="summary-card">
+                <h3>高危漏洞</h3>
+                <p class="number high" id="high-severity">0</p>
+            </div>
+            <div class="summary-card">
+                <h3>中危漏洞</h3>
+                <p class="number medium" id="medium-severity">0</p>
+            </div>
+            <div class="summary-card">
+                <h3>低危漏洞</h3>
+                <p class="number low" id="low-severity">0</p>
+            </div>
+        </section>
+
+        <!-- 漏洞详情 -->
+        <main class="content">
+            <h2>漏洞详情</h2>
+            <div id="vulnerabilities-list">
+                <!-- 漏洞列表将通过 JavaScript 动态生成 -->
+            </div>
+        </main>
+
+        <!-- 报告尾部 -->
+        <footer class="footer">
+            <p>本报告由 Wake Auditor 自动生成 | 建议结合人工审计进行综合评估</p>
+        </footer>
+    </div>
+
+    <script>
+        // 示例数据 - 实际使用时从 Wake 分析结果加载
+        const reportData = {
+            projectName: "DeFi Protocol",
+            reportDate: new Date().toLocaleDateString('zh-CN'),
+            summary: {
+                totalFiles: 5,
+                totalVulnerabilities: 8,
+                highSeverity: 2,
+                mediumSeverity: 3,
+                lowSeverity: 3
+            },
+            vulnerabilities: [
+                {
+                    type: "重入攻击风险",
+                    severity: "high",
+                    file: "contracts/Bank.sol",
+                    line: 45,
+                    description: "外部调用后进行状态改变，可能导致重入攻击",
+                    codeSnippet: "(bool success, ) = msg.sender.call{value: amount}(\"\");\nbalances[msg.sender] -= amount;",
+                    recommendation: "使用 Checks-Effects-Interactions 模式，先改变状态再进行外部调用"
+                },
+                {
+                    type: "访问控制漏洞",
+                    severity: "high",
+                    file: "contracts/Admin.sol",
+                    line: 23,
+                    description: "公共函数缺少访问控制，任何地址都可以调用",
+                    codeSnippet: "function setOwner(address newOwner) public {\n    owner = newOwner;\n}",
+                    recommendation: "添加 onlyOwner 修饰符或 require(msg.sender == owner) 检查"
+                },
+                {
+                    type: "整数溢出风险",
+                    severity: "medium",
+                    file: "contracts/Token.sol",
+                    line: 67,
+                    description: "算术运算可能存在溢出风险",
+                    codeSnippet: "totalSupply += amount;",
+                    recommendation: "使用 SafeMath 库或升级到 Solidity 0.8.0+"
+                }
+            ]
+        };
+
+        // 渲染报告
+        function renderReport(data) {
+            // 更新摘要信息
+            document.getElementById('project-name').textContent = data.projectName;
+            document.getElementById('report-date').textContent = data.reportDate;
+            document.getElementById('total-files').textContent = data.summary.totalFiles;
+            document.getElementById('total-vulnerabilities').textContent = data.summary.totalVulnerabilities;
+            document.getElementById('high-severity').textContent = data.summary.highSeverity;
+            document.getElementById('medium-severity').textContent = data.summary.mediumSeverity;
+            document.getElementById('low-severity').textContent = data.summary.lowSeverity;
+
+            // 渲染漏洞列表
+            const vulnerabilitiesList = document.getElementById('vulnerabilities-list');
+
+            if (data.vulnerabilities.length === 0) {
+                vulnerabilitiesList.innerHTML = '<p style="text-align: center; color: #28a745; font-size: 1.2em;">🎉 未发现安全漏洞！</p>';
+                return;
+            }
+
+            data.vulnerabilities.forEach(vuln => {
+                const vulnerabilityDiv = document.createElement('div');
+                vulnerabilityDiv.className = `vulnerability ${vuln.severity}`;
+
+                vulnerabilityDiv.innerHTML = `
+                    <div class="vulnerability-header">
+                        <div class="vulnerability-title">
+                            <h3>${vuln.type}</h3>
+                            <span class="severity-badge ${vuln.severity}">${vuln.severity === 'high' ? '高危' : vuln.severity === 'medium' ? '中危' : '低危'}</span>
+                        </div>
+                        <div class="file-info">📁 ${vuln.file}:${vuln.line}</div>
+                        <p>${vuln.description}</p>
+                    </div>
+                    <div class="vulnerability-details">
+                        <h4>代码片段:</h4>
+                        <div class="code-snippet">${vuln.codeSnippet}</div>
+
+                        <h4>修复建议:</h4>
+                        <div class="recommendation">
+                            <strong>建议:</strong> ${vuln.recommendation}
+                        </div>
+                    </div>
+                `;
+
+                vulnerabilitiesList.appendChild(vulnerabilityDiv);
+            });
+        }
+
+        // 页面加载时渲染报告
+        document.addEventListener('DOMContentLoaded', function() {
+            renderReport(reportData);
+        });
+
+        // 支持从外部加载数据
+        function loadReportData(jsonData) {
+            try {
+                const data = typeof jsonData === 'string' ? JSON.parse(jsonData) : jsonData;
+                renderReport(data);
+            } catch (error) {
+                console.error('加载数据失败:', error);
+                document.getElementById('vulnerabilities-list').innerHTML =
+                    '<p style="text-align: center; color: #dc3545;">加载数据失败，请检查数据格式</p>';
+            }
+        }
+
+        // 导出函数供外部调用
+        window.loadReportData = loadReportData;
+    </script>
+</body>
+</html>
