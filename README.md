@@ -308,7 +308,6 @@ python3 hardhat-manager/scripts/multi_chain_deployer.py --config ci-config.json
 
 感谢以下开源项目和社区：
 
-- [Claude Code](https://claude.ai/code) - 强大的 AI 辅助开发环境
 - [Hardhat](https://hardhat.org/) - 专业的以太坊开发框架
 - [Wake](https://github.com/Ackee-Blockchain/wake) - 先进的 Solidity 分析工具
 - [OpenZeppelin](https://openzeppelin.com/) - 安全的智能合约标准
