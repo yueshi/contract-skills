@@ -1,6 +1,6 @@
 # Claude Code Skill 创建指南
 
-> 基于 skill-best-practice.txt 提炼的系统性方法论，帮助开发者创建高质量的 Claude Code Skills
+> 基于官方skill实例分析总结提炼的系统性方法，帮助开发者创建高质量的 Claude Code Skills
 
 ## 🎯 目录
 
